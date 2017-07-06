@@ -12,7 +12,7 @@
 		</CustomData>
 		<CustomData Category="Reference" Type="Assembly">
 			<Metadata Name="LogicalName" Value="Apartment.dll" />
-			<Metadata Name="FileName" Value="C:\USERS\WILLIAMV\DOCUMENTS\APARTMENTS\APARTMENT\APARTMENT\OBJ\DEBUG\APARTMENT.DLL" />
+			<Metadata Name="FileName" Value="C:\USERS\WILLIAMV\DOCUMENTS\VISUAL STUDIO 2017\PROJECTS\APARTMENT\APARTMENT\APARTMENT\OBJ\DEBUG\APARTMENT.DLL" />
 			<Metadata Name="AssemblyName" Value="Apartment" />
 			<Metadata Name="PermissionSet" Value="SAFE" />
 			<Metadata Name="Owner" Value="" />
@@ -20,7 +20,7 @@
 			<Metadata Name="IsVisible" Value="True" />
 			<Metadata Name="IsModelAware" Value="True" />
 			<Metadata Name="SkipCreationIfEmpty" Value="True" />
-			<Metadata Name="AssemblySymbolsName" Value="C:\Users\williamv\Documents\Apartments\Apartment\Apartment\obj\Debug\Apartment.pdb" />
+			<Metadata Name="AssemblySymbolsName" Value="C:\Users\williamv\Documents\Visual Studio 2017\Projects\Apartment\Apartment\Apartment\obj\Debug\Apartment.pdb" />
 		</CustomData>
 		<CustomData Category="SqlCmdVariables" Type="SqlCmdVariable" />
 	</Header>

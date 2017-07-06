@@ -1,71 +1,71 @@
-C:\Users\williamv\Documents\Apartments\ApartmentSite\ApartmentSite\bin\ApplicationInsights.config
-C:\Users\williamv\Documents\Apartments\ApartmentSite\ApartmentSite\bin\roslyn\csc.exe
-C:\Users\williamv\Documents\Apartments\ApartmentSite\ApartmentSite\bin\roslyn\csc.exe.config
-C:\Users\williamv\Documents\Apartments\ApartmentSite\ApartmentSite\bin\roslyn\csc.rsp
-C:\Users\williamv\Documents\Apartments\ApartmentSite\ApartmentSite\bin\roslyn\csi.exe
-C:\Users\williamv\Documents\Apartments\ApartmentSite\ApartmentSite\bin\roslyn\csi.rsp
-C:\Users\williamv\Documents\Apartments\ApartmentSite\ApartmentSite\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
-C:\Users\williamv\Documents\Apartments\ApartmentSite\ApartmentSite\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
-C:\Users\williamv\Documents\Apartments\ApartmentSite\ApartmentSite\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
-C:\Users\williamv\Documents\Apartments\ApartmentSite\ApartmentSite\bin\roslyn\Microsoft.CodeAnalysis.dll
-C:\Users\williamv\Documents\Apartments\ApartmentSite\ApartmentSite\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
-C:\Users\williamv\Documents\Apartments\ApartmentSite\ApartmentSite\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
-C:\Users\williamv\Documents\Apartments\ApartmentSite\ApartmentSite\bin\roslyn\Microsoft.CSharp.Core.targets
-C:\Users\williamv\Documents\Apartments\ApartmentSite\ApartmentSite\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
-C:\Users\williamv\Documents\Apartments\ApartmentSite\ApartmentSite\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
-C:\Users\williamv\Documents\Apartments\ApartmentSite\ApartmentSite\bin\roslyn\Microsoft.VisualBasic.Core.targets
-C:\Users\williamv\Documents\Apartments\ApartmentSite\ApartmentSite\bin\roslyn\System.AppContext.dll
-C:\Users\williamv\Documents\Apartments\ApartmentSite\ApartmentSite\bin\roslyn\System.Collections.Immutable.dll
-C:\Users\williamv\Documents\Apartments\ApartmentSite\ApartmentSite\bin\roslyn\System.Diagnostics.StackTrace.dll
-C:\Users\williamv\Documents\Apartments\ApartmentSite\ApartmentSite\bin\roslyn\System.IO.FileSystem.dll
-C:\Users\williamv\Documents\Apartments\ApartmentSite\ApartmentSite\bin\roslyn\System.IO.FileSystem.Primitives.dll
-C:\Users\williamv\Documents\Apartments\ApartmentSite\ApartmentSite\bin\roslyn\System.Reflection.Metadata.dll
-C:\Users\williamv\Documents\Apartments\ApartmentSite\ApartmentSite\bin\roslyn\vbc.exe
-C:\Users\williamv\Documents\Apartments\ApartmentSite\ApartmentSite\bin\roslyn\vbc.exe.config
-C:\Users\williamv\Documents\Apartments\ApartmentSite\ApartmentSite\bin\roslyn\vbc.rsp
-C:\Users\williamv\Documents\Apartments\ApartmentSite\ApartmentSite\bin\roslyn\VBCSCompiler.exe
-C:\Users\williamv\Documents\Apartments\ApartmentSite\ApartmentSite\bin\roslyn\VBCSCompiler.exe.config
-C:\Users\williamv\Documents\Apartments\ApartmentSite\ApartmentSite\bin\ApartmentSite.dll.config
-C:\Users\williamv\Documents\Apartments\ApartmentSite\ApartmentSite\bin\ApartmentSite.dll
-C:\Users\williamv\Documents\Apartments\ApartmentSite\ApartmentSite\bin\ApartmentSite.pdb
-C:\Users\williamv\Documents\Apartments\ApartmentSite\ApartmentSite\bin\Antlr3.Runtime.dll
-C:\Users\williamv\Documents\Apartments\ApartmentSite\ApartmentSite\bin\EntityFramework.dll
-C:\Users\williamv\Documents\Apartments\ApartmentSite\ApartmentSite\bin\EntityFramework.SqlServer.dll
-C:\Users\williamv\Documents\Apartments\ApartmentSite\ApartmentSite\bin\Microsoft.AI.Agent.Intercept.dll
-C:\Users\williamv\Documents\Apartments\ApartmentSite\ApartmentSite\bin\Microsoft.AI.DependencyCollector.dll
-C:\Users\williamv\Documents\Apartments\ApartmentSite\ApartmentSite\bin\Microsoft.AI.PerfCounterCollector.dll
-C:\Users\williamv\Documents\Apartments\ApartmentSite\ApartmentSite\bin\Microsoft.AI.ServerTelemetryChannel.dll
-C:\Users\williamv\Documents\Apartments\ApartmentSite\ApartmentSite\bin\Microsoft.AI.Web.dll
-C:\Users\williamv\Documents\Apartments\ApartmentSite\ApartmentSite\bin\Microsoft.AI.WindowsServer.dll
-C:\Users\williamv\Documents\Apartments\ApartmentSite\ApartmentSite\bin\Microsoft.ApplicationInsights.dll
-C:\Users\williamv\Documents\Apartments\ApartmentSite\ApartmentSite\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
-C:\Users\williamv\Documents\Apartments\ApartmentSite\ApartmentSite\bin\Microsoft.Web.Infrastructure.dll
-C:\Users\williamv\Documents\Apartments\ApartmentSite\ApartmentSite\bin\Newtonsoft.Json.dll
-C:\Users\williamv\Documents\Apartments\ApartmentSite\ApartmentSite\bin\System.Web.Helpers.dll
-C:\Users\williamv\Documents\Apartments\ApartmentSite\ApartmentSite\bin\System.Web.Mvc.dll
-C:\Users\williamv\Documents\Apartments\ApartmentSite\ApartmentSite\bin\System.Web.Optimization.dll
-C:\Users\williamv\Documents\Apartments\ApartmentSite\ApartmentSite\bin\System.Web.Razor.dll
-C:\Users\williamv\Documents\Apartments\ApartmentSite\ApartmentSite\bin\System.Web.WebPages.Deployment.dll
-C:\Users\williamv\Documents\Apartments\ApartmentSite\ApartmentSite\bin\System.Web.WebPages.dll
-C:\Users\williamv\Documents\Apartments\ApartmentSite\ApartmentSite\bin\System.Web.WebPages.Razor.dll
-C:\Users\williamv\Documents\Apartments\ApartmentSite\ApartmentSite\bin\WebGrease.dll
-C:\Users\williamv\Documents\Apartments\ApartmentSite\ApartmentSite\bin\EntityFramework.xml
-C:\Users\williamv\Documents\Apartments\ApartmentSite\ApartmentSite\bin\EntityFramework.SqlServer.xml
-C:\Users\williamv\Documents\Apartments\ApartmentSite\ApartmentSite\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-C:\Users\williamv\Documents\Apartments\ApartmentSite\ApartmentSite\bin\System.Web.Helpers.xml
-C:\Users\williamv\Documents\Apartments\ApartmentSite\ApartmentSite\bin\System.Web.Mvc.xml
-C:\Users\williamv\Documents\Apartments\ApartmentSite\ApartmentSite\bin\System.Web.Optimization.xml
-C:\Users\williamv\Documents\Apartments\ApartmentSite\ApartmentSite\bin\System.Web.Razor.xml
-C:\Users\williamv\Documents\Apartments\ApartmentSite\ApartmentSite\bin\System.Web.WebPages.xml
-C:\Users\williamv\Documents\Apartments\ApartmentSite\ApartmentSite\bin\System.Web.WebPages.Deployment.xml
-C:\Users\williamv\Documents\Apartments\ApartmentSite\ApartmentSite\bin\System.Web.WebPages.Razor.xml
-C:\Users\williamv\Documents\Apartments\ApartmentSite\ApartmentSite\bin\Antlr3.Runtime.pdb
-C:\Users\williamv\Documents\Apartments\ApartmentSite\ApartmentSite\bin\Newtonsoft.Json.xml
-C:\Users\williamv\Documents\Apartments\ApartmentSite\ApartmentSite\bin\Microsoft.ApplicationInsights.xml
-C:\Users\williamv\Documents\Apartments\ApartmentSite\ApartmentSite\bin\Microsoft.AI.DependencyCollector.xml
-C:\Users\williamv\Documents\Apartments\ApartmentSite\ApartmentSite\bin\Microsoft.AI.ServerTelemetryChannel.xml
-C:\Users\williamv\Documents\Apartments\ApartmentSite\ApartmentSite\bin\Microsoft.AI.WindowsServer.xml
-C:\Users\williamv\Documents\Apartments\ApartmentSite\ApartmentSite\bin\Microsoft.AI.Web.xml
-C:\Users\williamv\Documents\Apartments\ApartmentSite\ApartmentSite\obj\Debug\ApartmentSite.csprojResolveAssemblyReference.cache
-C:\Users\williamv\Documents\Apartments\ApartmentSite\ApartmentSite\obj\Debug\ApartmentSite.dll
-C:\Users\williamv\Documents\Apartments\ApartmentSite\ApartmentSite\obj\Debug\ApartmentSite.pdb
+C:\Users\williamv\Documents\Visual Studio 2017\Projects\Apartment\ApartmentSite\ApartmentSite\bin\ApplicationInsights.config
+C:\Users\williamv\Documents\Visual Studio 2017\Projects\Apartment\ApartmentSite\ApartmentSite\bin\roslyn\csc.exe
+C:\Users\williamv\Documents\Visual Studio 2017\Projects\Apartment\ApartmentSite\ApartmentSite\bin\roslyn\csc.exe.config
+C:\Users\williamv\Documents\Visual Studio 2017\Projects\Apartment\ApartmentSite\ApartmentSite\bin\roslyn\csc.rsp
+C:\Users\williamv\Documents\Visual Studio 2017\Projects\Apartment\ApartmentSite\ApartmentSite\bin\roslyn\csi.exe
+C:\Users\williamv\Documents\Visual Studio 2017\Projects\Apartment\ApartmentSite\ApartmentSite\bin\roslyn\csi.rsp
+C:\Users\williamv\Documents\Visual Studio 2017\Projects\Apartment\ApartmentSite\ApartmentSite\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\williamv\Documents\Visual Studio 2017\Projects\Apartment\ApartmentSite\ApartmentSite\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\williamv\Documents\Visual Studio 2017\Projects\Apartment\ApartmentSite\ApartmentSite\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+C:\Users\williamv\Documents\Visual Studio 2017\Projects\Apartment\ApartmentSite\ApartmentSite\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\williamv\Documents\Visual Studio 2017\Projects\Apartment\ApartmentSite\ApartmentSite\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+C:\Users\williamv\Documents\Visual Studio 2017\Projects\Apartment\ApartmentSite\ApartmentSite\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\williamv\Documents\Visual Studio 2017\Projects\Apartment\ApartmentSite\ApartmentSite\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\williamv\Documents\Visual Studio 2017\Projects\Apartment\ApartmentSite\ApartmentSite\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+C:\Users\williamv\Documents\Visual Studio 2017\Projects\Apartment\ApartmentSite\ApartmentSite\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+C:\Users\williamv\Documents\Visual Studio 2017\Projects\Apartment\ApartmentSite\ApartmentSite\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\williamv\Documents\Visual Studio 2017\Projects\Apartment\ApartmentSite\ApartmentSite\bin\roslyn\System.AppContext.dll
+C:\Users\williamv\Documents\Visual Studio 2017\Projects\Apartment\ApartmentSite\ApartmentSite\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\williamv\Documents\Visual Studio 2017\Projects\Apartment\ApartmentSite\ApartmentSite\bin\roslyn\System.Diagnostics.StackTrace.dll
+C:\Users\williamv\Documents\Visual Studio 2017\Projects\Apartment\ApartmentSite\ApartmentSite\bin\roslyn\System.IO.FileSystem.dll
+C:\Users\williamv\Documents\Visual Studio 2017\Projects\Apartment\ApartmentSite\ApartmentSite\bin\roslyn\System.IO.FileSystem.Primitives.dll
+C:\Users\williamv\Documents\Visual Studio 2017\Projects\Apartment\ApartmentSite\ApartmentSite\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\williamv\Documents\Visual Studio 2017\Projects\Apartment\ApartmentSite\ApartmentSite\bin\roslyn\vbc.exe
+C:\Users\williamv\Documents\Visual Studio 2017\Projects\Apartment\ApartmentSite\ApartmentSite\bin\roslyn\vbc.exe.config
+C:\Users\williamv\Documents\Visual Studio 2017\Projects\Apartment\ApartmentSite\ApartmentSite\bin\roslyn\vbc.rsp
+C:\Users\williamv\Documents\Visual Studio 2017\Projects\Apartment\ApartmentSite\ApartmentSite\bin\roslyn\VBCSCompiler.exe
+C:\Users\williamv\Documents\Visual Studio 2017\Projects\Apartment\ApartmentSite\ApartmentSite\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\williamv\Documents\Visual Studio 2017\Projects\Apartment\ApartmentSite\ApartmentSite\bin\ApartmentSite.dll.config
+C:\Users\williamv\Documents\Visual Studio 2017\Projects\Apartment\ApartmentSite\ApartmentSite\bin\ApartmentSite.dll
+C:\Users\williamv\Documents\Visual Studio 2017\Projects\Apartment\ApartmentSite\ApartmentSite\bin\ApartmentSite.pdb
+C:\Users\williamv\Documents\Visual Studio 2017\Projects\Apartment\ApartmentSite\ApartmentSite\bin\Antlr3.Runtime.dll
+C:\Users\williamv\Documents\Visual Studio 2017\Projects\Apartment\ApartmentSite\ApartmentSite\bin\EntityFramework.dll
+C:\Users\williamv\Documents\Visual Studio 2017\Projects\Apartment\ApartmentSite\ApartmentSite\bin\EntityFramework.SqlServer.dll
+C:\Users\williamv\Documents\Visual Studio 2017\Projects\Apartment\ApartmentSite\ApartmentSite\bin\Microsoft.AI.Agent.Intercept.dll
+C:\Users\williamv\Documents\Visual Studio 2017\Projects\Apartment\ApartmentSite\ApartmentSite\bin\Microsoft.AI.DependencyCollector.dll
+C:\Users\williamv\Documents\Visual Studio 2017\Projects\Apartment\ApartmentSite\ApartmentSite\bin\Microsoft.AI.PerfCounterCollector.dll
+C:\Users\williamv\Documents\Visual Studio 2017\Projects\Apartment\ApartmentSite\ApartmentSite\bin\Microsoft.AI.ServerTelemetryChannel.dll
+C:\Users\williamv\Documents\Visual Studio 2017\Projects\Apartment\ApartmentSite\ApartmentSite\bin\Microsoft.AI.Web.dll
+C:\Users\williamv\Documents\Visual Studio 2017\Projects\Apartment\ApartmentSite\ApartmentSite\bin\Microsoft.AI.WindowsServer.dll
+C:\Users\williamv\Documents\Visual Studio 2017\Projects\Apartment\ApartmentSite\ApartmentSite\bin\Microsoft.ApplicationInsights.dll
+C:\Users\williamv\Documents\Visual Studio 2017\Projects\Apartment\ApartmentSite\ApartmentSite\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\williamv\Documents\Visual Studio 2017\Projects\Apartment\ApartmentSite\ApartmentSite\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\williamv\Documents\Visual Studio 2017\Projects\Apartment\ApartmentSite\ApartmentSite\bin\Newtonsoft.Json.dll
+C:\Users\williamv\Documents\Visual Studio 2017\Projects\Apartment\ApartmentSite\ApartmentSite\bin\System.Web.Helpers.dll
+C:\Users\williamv\Documents\Visual Studio 2017\Projects\Apartment\ApartmentSite\ApartmentSite\bin\System.Web.Mvc.dll
+C:\Users\williamv\Documents\Visual Studio 2017\Projects\Apartment\ApartmentSite\ApartmentSite\bin\System.Web.Optimization.dll
+C:\Users\williamv\Documents\Visual Studio 2017\Projects\Apartment\ApartmentSite\ApartmentSite\bin\System.Web.Razor.dll
+C:\Users\williamv\Documents\Visual Studio 2017\Projects\Apartment\ApartmentSite\ApartmentSite\bin\System.Web.WebPages.Deployment.dll
+C:\Users\williamv\Documents\Visual Studio 2017\Projects\Apartment\ApartmentSite\ApartmentSite\bin\System.Web.WebPages.dll
+C:\Users\williamv\Documents\Visual Studio 2017\Projects\Apartment\ApartmentSite\ApartmentSite\bin\System.Web.WebPages.Razor.dll
+C:\Users\williamv\Documents\Visual Studio 2017\Projects\Apartment\ApartmentSite\ApartmentSite\bin\WebGrease.dll
+C:\Users\williamv\Documents\Visual Studio 2017\Projects\Apartment\ApartmentSite\ApartmentSite\bin\EntityFramework.xml
+C:\Users\williamv\Documents\Visual Studio 2017\Projects\Apartment\ApartmentSite\ApartmentSite\bin\EntityFramework.SqlServer.xml
+C:\Users\williamv\Documents\Visual Studio 2017\Projects\Apartment\ApartmentSite\ApartmentSite\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\williamv\Documents\Visual Studio 2017\Projects\Apartment\ApartmentSite\ApartmentSite\bin\System.Web.Helpers.xml
+C:\Users\williamv\Documents\Visual Studio 2017\Projects\Apartment\ApartmentSite\ApartmentSite\bin\System.Web.Mvc.xml
+C:\Users\williamv\Documents\Visual Studio 2017\Projects\Apartment\ApartmentSite\ApartmentSite\bin\System.Web.Optimization.xml
+C:\Users\williamv\Documents\Visual Studio 2017\Projects\Apartment\ApartmentSite\ApartmentSite\bin\System.Web.Razor.xml
+C:\Users\williamv\Documents\Visual Studio 2017\Projects\Apartment\ApartmentSite\ApartmentSite\bin\System.Web.WebPages.xml
+C:\Users\williamv\Documents\Visual Studio 2017\Projects\Apartment\ApartmentSite\ApartmentSite\bin\System.Web.WebPages.Deployment.xml
+C:\Users\williamv\Documents\Visual Studio 2017\Projects\Apartment\ApartmentSite\ApartmentSite\bin\System.Web.WebPages.Razor.xml
+C:\Users\williamv\Documents\Visual Studio 2017\Projects\Apartment\ApartmentSite\ApartmentSite\bin\Antlr3.Runtime.pdb
+C:\Users\williamv\Documents\Visual Studio 2017\Projects\Apartment\ApartmentSite\ApartmentSite\bin\Newtonsoft.Json.xml
+C:\Users\williamv\Documents\Visual Studio 2017\Projects\Apartment\ApartmentSite\ApartmentSite\bin\Microsoft.ApplicationInsights.xml
+C:\Users\williamv\Documents\Visual Studio 2017\Projects\Apartment\ApartmentSite\ApartmentSite\bin\Microsoft.AI.DependencyCollector.xml
+C:\Users\williamv\Documents\Visual Studio 2017\Projects\Apartment\ApartmentSite\ApartmentSite\bin\Microsoft.AI.ServerTelemetryChannel.xml
+C:\Users\williamv\Documents\Visual Studio 2017\Projects\Apartment\ApartmentSite\ApartmentSite\bin\Microsoft.AI.WindowsServer.xml
+C:\Users\williamv\Documents\Visual Studio 2017\Projects\Apartment\ApartmentSite\ApartmentSite\bin\Microsoft.AI.Web.xml
+C:\Users\williamv\Documents\Visual Studio 2017\Projects\Apartment\ApartmentSite\ApartmentSite\obj\Debug\ApartmentSite.csprojResolveAssemblyReference.cache
+C:\Users\williamv\Documents\Visual Studio 2017\Projects\Apartment\ApartmentSite\ApartmentSite\obj\Debug\ApartmentSite.dll
+C:\Users\williamv\Documents\Visual Studio 2017\Projects\Apartment\ApartmentSite\ApartmentSite\obj\Debug\ApartmentSite.pdb

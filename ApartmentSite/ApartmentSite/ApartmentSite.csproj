@@ -9,7 +9,7 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{63608B97-1E03-4314-BAF4-0F1ECD1922D2}</ProjectGuid>
+    <ProjectGuid>{8FDDC4F8-36C5-4A46-A39D-456482C03DBB}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -190,8 +190,8 @@
     <Content Include="Content\Site.css" />
     <Content Include="Models\ApartmentModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ApartmentModel.edmx</DependentUpon>
       <LastGenOutput>ApartmentModel.Context.cs</LastGenOutput>
+      <DependentUpon>ApartmentModel.edmx</DependentUpon>
     </Content>
     <Content Include="Models\ApartmentModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -283,9 +283,9 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>5063</DevelopmentServerPort>
+          <DevelopmentServerPort>9504</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:5063/</IISUrl>
+          <IISUrl>http://localhost:9504/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
