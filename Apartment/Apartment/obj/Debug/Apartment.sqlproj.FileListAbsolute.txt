@@ -1,0 +1,9 @@
+C:\Users\William Montesdeoca\Documents\CIT-301c\Apartments\Apartment\Apartment\bin\Debug\Apartment.dacpac
+C:\Users\William Montesdeoca\Documents\CIT-301c\Apartments\Apartment\Apartment\bin\Debug\Apartment.dll
+C:\Users\William Montesdeoca\Documents\CIT-301c\Apartments\Apartment\Apartment\bin\Debug\Apartment.pdb
+C:\Users\William Montesdeoca\Documents\CIT-301c\Apartments\Apartment\Apartment\obj\Debug\Model.xml
+C:\Users\William Montesdeoca\Documents\CIT-301c\Apartments\Apartment\Apartment\obj\Debug\refactor.xml
+C:\Users\William Montesdeoca\Documents\CIT-301c\Apartments\Apartment\Apartment\obj\Debug\postdeploy.sql
+C:\Users\William Montesdeoca\Documents\CIT-301c\Apartments\Apartment\Apartment\obj\Debug\predeploy.sql
+C:\Users\William Montesdeoca\Documents\CIT-301c\Apartments\Apartment\Apartment\obj\Debug\Apartment.dll
+C:\Users\William Montesdeoca\Documents\CIT-301c\Apartments\Apartment\Apartment\obj\Debug\Apartment.pdb
