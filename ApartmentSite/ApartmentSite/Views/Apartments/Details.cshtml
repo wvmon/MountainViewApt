@@ -1,0 +1,66 @@
+﻿@model ApartmentSite.Models.Apartment
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Apartment</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.AptAddress)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AptAddress)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SqFootage)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SqFootage)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MonthUtilityFee)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MonthUtilityFee)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MonthParkfee)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MonthParkfee)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LastCleanDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LastCleanDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsVacant)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsVacant)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.AptId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ApartmentModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Apartment">
+    <Key>
+      <PropertyRef Name="AptId" />
+    </Key>
+    <Property Name="AptId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AptAddress" Type="nvarchar" MaxLength="50" />
+    <Property Name="SqFootage" Type="int" />
+    <Property Name="MonthUtilityFee" Type="float" />
+    <Property Name="MonthParkfee" Type="float" />
+    <Property Name="LastCleanDate" Type="datetime" />
+    <Property Name="IsVacant" Type="int" />
+  </EntityType>
+  <EntityType Name="Contract">
+    <Key>
+      <PropertyRef Name="ContractId" />
+    </Key>
+    <Property Name="ContractId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="StartDate" Type="datetime" />
+    <Property Name="EndDate" Type="datetime" />
+    <Property Name="MonthlyRent" Type="float" />
+    <Property Name="AptId" Type="int" Nullable="false" />
+    <Property Name="TenantId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Tenant">
+    <Key>
+      <PropertyRef Name="TenantId" />
+    </Key>
+    <Property Name="TenantId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FirstName" Type="nvarchar" MaxLength="50" />
+    <Property Name="LastName" Type="nvarchar" MaxLength="50" />
+    <Property Name="Phone" Type="bigint" />
+    <Property Name="Email" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <Association Name="FK_dbo_Contract_dbo_Apartment_AptId">
+    <End Role="Apartment" Type="Self.Apartment" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Contract" Type="Self.Contract" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Apartment">
+        <PropertyRef Name="AptId" />
+      </Principal>
+      <Dependent Role="Contract">
+        <PropertyRef Name="AptId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_Contract_dbo_Tenant_TenantId">
+    <End Role="Tenant" Type="Self.Tenant" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Contract" Type="Self.Contract" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tenant">
+        <PropertyRef Name="TenantId" />
+      </Principal>
+      <Dependent Role="Contract">
+        <PropertyRef Name="TenantId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ApartmentModelStoreContainer">
+    <EntitySet Name="Apartment" EntityType="Self.Apartment" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Contract" EntityType="Self.Contract" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tenant" EntityType="Self.Tenant" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_dbo_Contract_dbo_Apartment_AptId" Association="Self.FK_dbo_Contract_dbo_Apartment_AptId">
+      <End Role="Apartment" EntitySet="Apartment" />
+      <End Role="Contract" EntitySet="Contract" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_Contract_dbo_Tenant_TenantId" Association="Self.FK_dbo_Contract_dbo_Tenant_TenantId">
+      <End Role="Tenant" EntitySet="Tenant" />
+      <End Role="Contract" EntitySet="Contract" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
