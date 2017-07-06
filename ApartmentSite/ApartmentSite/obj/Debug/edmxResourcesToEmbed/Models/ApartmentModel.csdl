@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ApartmentModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Apartment">
+    <Key>
+      <PropertyRef Name="AptId" />
+    </Key>
+    <Property Name="AptId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AptAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="SqFootage" Type="Int32" />
+    <Property Name="MonthUtilityFee" Type="Double" />
+    <Property Name="MonthParkfee" Type="Double" />
+    <Property Name="LastCleanDate" Type="DateTime" Precision="3" />
+    <Property Name="IsVacant" Type="Int32" />
+    <NavigationProperty Name="Contracts" Relationship="Self.FK_dbo_Contract_dbo_Apartment_AptId" FromRole="Apartment" ToRole="Contract" />
+  </EntityType>
+  <EntityType Name="Contract">
+    <Key>
+      <PropertyRef Name="ContractId" />
+    </Key>
+    <Property Name="ContractId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="StartDate" Type="DateTime" Precision="3" />
+    <Property Name="EndDate" Type="DateTime" Precision="3" />
+    <Property Name="MonthlyRent" Type="Double" />
+    <Property Name="AptId" Type="Int32" Nullable="false" />
+    <Property Name="TenantId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Apartment" Relationship="Self.FK_dbo_Contract_dbo_Apartment_AptId" FromRole="Contract" ToRole="Apartment" />
+    <NavigationProperty Name="Tenant" Relationship="Self.FK_dbo_Contract_dbo_Tenant_TenantId" FromRole="Contract" ToRole="Tenant" />
+  </EntityType>
+  <EntityType Name="Tenant">
+    <Key>
+      <PropertyRef Name="TenantId" />
+    </Key>
+    <Property Name="TenantId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Phone" Type="Int64" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Contracts" Relationship="Self.FK_dbo_Contract_dbo_Tenant_TenantId" FromRole="Tenant" ToRole="Contract" />
+  </EntityType>
+  <Association Name="FK_dbo_Contract_dbo_Apartment_AptId">
+    <End Role="Apartment" Type="Self.Apartment" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Contract" Type="Self.Contract" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Apartment">
+        <PropertyRef Name="AptId" />
+      </Principal>
+      <Dependent Role="Contract">
+        <PropertyRef Name="AptId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_Contract_dbo_Tenant_TenantId">
+    <End Role="Tenant" Type="Self.Tenant" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Contract" Type="Self.Contract" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tenant">
+        <PropertyRef Name="TenantId" />
+      </Principal>
+      <Dependent Role="Contract">
+        <PropertyRef Name="TenantId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ApartmentEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Apartments" EntityType="Self.Apartment" />
+    <EntitySet Name="Contracts" EntityType="Self.Contract" />
+    <EntitySet Name="Tenants" EntityType="Self.Tenant" />
+    <AssociationSet Name="FK_dbo_Contract_dbo_Apartment_AptId" Association="Self.FK_dbo_Contract_dbo_Apartment_AptId">
+      <End Role="Apartment" EntitySet="Apartments" />
+      <End Role="Contract" EntitySet="Contracts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_Contract_dbo_Tenant_TenantId" Association="Self.FK_dbo_Contract_dbo_Tenant_TenantId">
+      <End Role="Tenant" EntitySet="Tenants" />
+      <End Role="Contract" EntitySet="Contracts" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

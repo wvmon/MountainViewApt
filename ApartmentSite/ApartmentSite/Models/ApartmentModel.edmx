@@ -1,0 +1,230 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="ApartmentModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Apartment">
+          <Key>
+            <PropertyRef Name="AptId" />
+          </Key>
+          <Property Name="AptId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AptAddress" Type="nvarchar" MaxLength="50" />
+          <Property Name="SqFootage" Type="int" />
+          <Property Name="MonthUtilityFee" Type="float" />
+          <Property Name="MonthParkfee" Type="float" />
+          <Property Name="LastCleanDate" Type="datetime" />
+          <Property Name="IsVacant" Type="int" />
+        </EntityType>
+        <EntityType Name="Contract">
+          <Key>
+            <PropertyRef Name="ContractId" />
+          </Key>
+          <Property Name="ContractId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StartDate" Type="datetime" />
+          <Property Name="EndDate" Type="datetime" />
+          <Property Name="MonthlyRent" Type="float" />
+          <Property Name="AptId" Type="int" Nullable="false" />
+          <Property Name="TenantId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tenant">
+          <Key>
+            <PropertyRef Name="TenantId" />
+          </Key>
+          <Property Name="TenantId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="50" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Phone" Type="bigint" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_dbo_Contract_dbo_Apartment_AptId">
+          <End Role="Apartment" Type="Self.Apartment" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Contract" Type="Self.Contract" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Apartment">
+              <PropertyRef Name="AptId" />
+            </Principal>
+            <Dependent Role="Contract">
+              <PropertyRef Name="AptId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Contract_dbo_Tenant_TenantId">
+          <End Role="Tenant" Type="Self.Tenant" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Contract" Type="Self.Contract" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tenant">
+              <PropertyRef Name="TenantId" />
+            </Principal>
+            <Dependent Role="Contract">
+              <PropertyRef Name="TenantId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ApartmentModelStoreContainer">
+          <EntitySet Name="Apartment" EntityType="Self.Apartment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Contract" EntityType="Self.Contract" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tenant" EntityType="Self.Tenant" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_dbo_Contract_dbo_Apartment_AptId" Association="Self.FK_dbo_Contract_dbo_Apartment_AptId">
+            <End Role="Apartment" EntitySet="Apartment" />
+            <End Role="Contract" EntitySet="Contract" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Contract_dbo_Tenant_TenantId" Association="Self.FK_dbo_Contract_dbo_Tenant_TenantId">
+            <End Role="Tenant" EntitySet="Tenant" />
+            <End Role="Contract" EntitySet="Contract" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ApartmentModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Apartment">
+          <Key>
+            <PropertyRef Name="AptId" />
+          </Key>
+          <Property Name="AptId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AptAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SqFootage" Type="Int32" />
+          <Property Name="MonthUtilityFee" Type="Double" />
+          <Property Name="MonthParkfee" Type="Double" />
+          <Property Name="LastCleanDate" Type="DateTime" Precision="3" />
+          <Property Name="IsVacant" Type="Int32" />
+          <NavigationProperty Name="Contracts" Relationship="Self.FK_dbo_Contract_dbo_Apartment_AptId" FromRole="Apartment" ToRole="Contract" />
+        </EntityType>
+        <EntityType Name="Contract">
+          <Key>
+            <PropertyRef Name="ContractId" />
+          </Key>
+          <Property Name="ContractId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StartDate" Type="DateTime" Precision="3" />
+          <Property Name="EndDate" Type="DateTime" Precision="3" />
+          <Property Name="MonthlyRent" Type="Double" />
+          <Property Name="AptId" Type="Int32" Nullable="false" />
+          <Property Name="TenantId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Apartment" Relationship="Self.FK_dbo_Contract_dbo_Apartment_AptId" FromRole="Contract" ToRole="Apartment" />
+          <NavigationProperty Name="Tenant" Relationship="Self.FK_dbo_Contract_dbo_Tenant_TenantId" FromRole="Contract" ToRole="Tenant" />
+        </EntityType>
+        <EntityType Name="Tenant">
+          <Key>
+            <PropertyRef Name="TenantId" />
+          </Key>
+          <Property Name="TenantId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="Int64" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Contracts" Relationship="Self.FK_dbo_Contract_dbo_Tenant_TenantId" FromRole="Tenant" ToRole="Contract" />
+        </EntityType>
+        <Association Name="FK_dbo_Contract_dbo_Apartment_AptId">
+          <End Role="Apartment" Type="Self.Apartment" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Contract" Type="Self.Contract" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Apartment">
+              <PropertyRef Name="AptId" />
+            </Principal>
+            <Dependent Role="Contract">
+              <PropertyRef Name="AptId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Contract_dbo_Tenant_TenantId">
+          <End Role="Tenant" Type="Self.Tenant" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Contract" Type="Self.Contract" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tenant">
+              <PropertyRef Name="TenantId" />
+            </Principal>
+            <Dependent Role="Contract">
+              <PropertyRef Name="TenantId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ApartmentEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Apartments" EntityType="Self.Apartment" />
+          <EntitySet Name="Contracts" EntityType="Self.Contract" />
+          <EntitySet Name="Tenants" EntityType="Self.Tenant" />
+          <AssociationSet Name="FK_dbo_Contract_dbo_Apartment_AptId" Association="Self.FK_dbo_Contract_dbo_Apartment_AptId">
+            <End Role="Apartment" EntitySet="Apartments" />
+            <End Role="Contract" EntitySet="Contracts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Contract_dbo_Tenant_TenantId" Association="Self.FK_dbo_Contract_dbo_Tenant_TenantId">
+            <End Role="Tenant" EntitySet="Tenants" />
+            <End Role="Contract" EntitySet="Contracts" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ApartmentModelStoreContainer" CdmEntityContainer="ApartmentEntities">
+          <EntitySetMapping Name="Apartments">
+            <EntityTypeMapping TypeName="ApartmentModel.Apartment">
+              <MappingFragment StoreEntitySet="Apartment">
+                <ScalarProperty Name="AptId" ColumnName="AptId" />
+                <ScalarProperty Name="AptAddress" ColumnName="AptAddress" />
+                <ScalarProperty Name="SqFootage" ColumnName="SqFootage" />
+                <ScalarProperty Name="MonthUtilityFee" ColumnName="MonthUtilityFee" />
+                <ScalarProperty Name="MonthParkfee" ColumnName="MonthParkfee" />
+                <ScalarProperty Name="LastCleanDate" ColumnName="LastCleanDate" />
+                <ScalarProperty Name="IsVacant" ColumnName="IsVacant" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Contracts">
+            <EntityTypeMapping TypeName="ApartmentModel.Contract">
+              <MappingFragment StoreEntitySet="Contract">
+                <ScalarProperty Name="ContractId" ColumnName="ContractId" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="MonthlyRent" ColumnName="MonthlyRent" />
+                <ScalarProperty Name="AptId" ColumnName="AptId" />
+                <ScalarProperty Name="TenantId" ColumnName="TenantId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tenants">
+            <EntityTypeMapping TypeName="ApartmentModel.Tenant">
+              <MappingFragment StoreEntitySet="Tenant">
+                <ScalarProperty Name="TenantId" ColumnName="TenantId" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
