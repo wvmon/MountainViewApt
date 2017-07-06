@@ -9,13 +9,13 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{786BD6D2-7060-4204-9180-6B8096F11996}</ProjectGuid>
+    <ProjectGuid>{63608B97-1E03-4314-BAF4-0F1ECD1922D2}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>ApartmentSite</RootNamespace>
     <AssemblyName>ApartmentSite</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
     <IISExpressSSLPort />
@@ -190,8 +190,8 @@
     <Content Include="Content\Site.css" />
     <Content Include="Models\ApartmentModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>ApartmentModel.Context.cs</LastGenOutput>
       <DependentUpon>ApartmentModel.edmx</DependentUpon>
+      <LastGenOutput>ApartmentModel.Context.cs</LastGenOutput>
     </Content>
     <Content Include="Models\ApartmentModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -235,16 +235,16 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Tenants\Create.cshtml" />
-    <Content Include="Views\Tenants\Delete.cshtml" />
-    <Content Include="Views\Tenants\Details.cshtml" />
-    <Content Include="Views\Tenants\Edit.cshtml" />
-    <Content Include="Views\Tenants\Index.cshtml" />
     <Content Include="Views\Apartments\Create.cshtml" />
     <Content Include="Views\Apartments\Delete.cshtml" />
     <Content Include="Views\Apartments\Details.cshtml" />
     <Content Include="Views\Apartments\Edit.cshtml" />
     <Content Include="Views\Apartments\Index.cshtml" />
+    <Content Include="Views\Tenants\Create.cshtml" />
+    <Content Include="Views\Tenants\Delete.cshtml" />
+    <Content Include="Views\Tenants\Details.cshtml" />
+    <Content Include="Views\Tenants\Edit.cshtml" />
+    <Content Include="Views\Tenants\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -283,9 +283,9 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>57116</DevelopmentServerPort>
+          <DevelopmentServerPort>5063</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:57116/</IISUrl>
+          <IISUrl>http://localhost:5063/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

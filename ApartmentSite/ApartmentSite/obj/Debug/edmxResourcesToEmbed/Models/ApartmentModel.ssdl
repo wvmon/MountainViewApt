@@ -10,7 +10,7 @@
     <Property Name="MonthUtilityFee" Type="float" />
     <Property Name="MonthParkfee" Type="float" />
     <Property Name="LastCleanDate" Type="datetime" />
-    <Property Name="IsVacant" Type="int" />
+    <Property Name="IsVacant" Type="bit" Nullable="false" />
   </EntityType>
   <EntityType Name="Contract">
     <Key>

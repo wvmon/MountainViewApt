@@ -12,7 +12,7 @@
 		</CustomData>
 		<CustomData Category="Reference" Type="Assembly">
 			<Metadata Name="LogicalName" Value="Apartment.dll" />
-			<Metadata Name="FileName" Value="C:\USERS\WILLIAM MONTESDEOCA\DOCUMENTS\CIT-301C\APARTMENTS\APARTMENT\APARTMENT\OBJ\DEBUG\APARTMENT.DLL" />
+			<Metadata Name="FileName" Value="C:\USERS\WILLIAMV\DOCUMENTS\APARTMENTS\APARTMENT\APARTMENT\OBJ\DEBUG\APARTMENT.DLL" />
 			<Metadata Name="AssemblyName" Value="Apartment" />
 			<Metadata Name="PermissionSet" Value="SAFE" />
 			<Metadata Name="Owner" Value="" />
@@ -20,7 +20,7 @@
 			<Metadata Name="IsVisible" Value="True" />
 			<Metadata Name="IsModelAware" Value="True" />
 			<Metadata Name="SkipCreationIfEmpty" Value="True" />
-			<Metadata Name="AssemblySymbolsName" Value="C:\Users\William Montesdeoca\Documents\CIT-301c\Apartments\Apartment\Apartment\obj\Debug\Apartment.pdb" />
+			<Metadata Name="AssemblySymbolsName" Value="C:\Users\williamv\Documents\Apartments\Apartment\Apartment\obj\Debug\Apartment.pdb" />
 		</CustomData>
 		<CustomData Category="SqlCmdVariables" Type="SqlCmdVariable" />
 	</Header>
@@ -50,7 +50,7 @@
 					<Element Type="SqlIndexedColumnSpecification">
 						<Relationship Name="Column">
 							<Entry>
-								<References Name="[dbo].[Tenant].[TenantId]" />
+								<References Name="[dbo].[Apartment].[AptId]" />
 							</Entry>
 						</Relationship>
 					</Element>
@@ -58,7 +58,7 @@
 			</Relationship>
 			<Relationship Name="DefiningTable">
 				<Entry>
-					<References Name="[dbo].[Tenant]" />
+					<References Name="[dbo].[Apartment]" />
 				</Entry>
 			</Relationship>
 			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="3" />
@@ -88,7 +88,7 @@
 					<Element Type="SqlIndexedColumnSpecification">
 						<Relationship Name="Column">
 							<Entry>
-								<References Name="[dbo].[Apartment].[AptId]" />
+								<References Name="[dbo].[Tenant].[TenantId]" />
 							</Entry>
 						</Relationship>
 					</Element>
@@ -96,7 +96,7 @@
 			</Relationship>
 			<Relationship Name="DefiningTable">
 				<Entry>
-					<References Name="[dbo].[Apartment]" />
+					<References Name="[dbo].[Tenant]" />
 				</Entry>
 			</Relationship>
 			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="5" />
@@ -201,12 +201,13 @@
 				</Entry>
 				<Entry>
 					<Element Type="SqlSimpleColumn" Name="[dbo].[Apartment].[IsVacant]">
+						<Property Name="IsNullable" Value="False" />
 						<Relationship Name="TypeSpecifier">
 							<Entry>
 								<Element Type="SqlTypeSpecifier">
 									<Relationship Name="Type">
 										<Entry>
-											<References ExternalSource="BuiltIns" Name="[int]" />
+											<References ExternalSource="BuiltIns" Name="[bit]" />
 										</Entry>
 									</Relationship>
 								</Element>
@@ -220,7 +221,7 @@
 					<References ExternalSource="BuiltIns" Name="[dbo]" />
 				</Entry>
 			</Relationship>
-			<AttachedAnnotation Disambiguator="5" />
+			<AttachedAnnotation Disambiguator="3" />
 		</Element>
 		<Element Type="SqlTable" Name="[dbo].[Contract]">
 			<Property Name="IsAnsiNullsOn" Value="True" />
@@ -467,7 +468,7 @@
 					<References ExternalSource="BuiltIns" Name="[dbo]" />
 				</Entry>
 			</Relationship>
-			<AttachedAnnotation Disambiguator="3" />
+			<AttachedAnnotation Disambiguator="5" />
 		</Element>
 	</Model>
 </DataSchemaModel>

@@ -15,8 +15,8 @@ SET NUMERIC_ROUNDABORT OFF;
 GO
 :setvar DatabaseName "Apartment"
 :setvar DefaultFilePrefix "Apartment"
-:setvar DefaultDataPath "C:\Users\William Montesdeoca\AppData\Local\Microsoft\VisualStudio\SSDT\Apartment"
-:setvar DefaultLogPath "C:\Users\William Montesdeoca\AppData\Local\Microsoft\VisualStudio\SSDT\Apartment"
+:setvar DefaultDataPath "C:\Users\williamv\AppData\Local\Microsoft\VisualStudio\SSDT\Apartment"
+:setvar DefaultLogPath "C:\Users\williamv\AppData\Local\Microsoft\VisualStudio\SSDT\Apartment"
 
 GO
 :on error exit
@@ -36,7 +36,268 @@ IF N'$(__IsSqlCmdEnabled)' NOT LIKE N'True'
 
 
 GO
+USE [master];
+
+
+GO
+
+IF (DB_ID(N'$(DatabaseName)') IS NOT NULL) 
+BEGIN
+    ALTER DATABASE [$(DatabaseName)]
+    SET SINGLE_USER WITH ROLLBACK IMMEDIATE;
+    DROP DATABASE [$(DatabaseName)];
+END
+
+GO
+PRINT N'Creating $(DatabaseName)...'
+GO
+CREATE DATABASE [$(DatabaseName)]
+    ON 
+    PRIMARY(NAME = [$(DatabaseName)], FILENAME = N'$(DefaultDataPath)$(DefaultFilePrefix)_Primary.mdf')
+    LOG ON (NAME = [$(DatabaseName)_log], FILENAME = N'$(DefaultLogPath)$(DefaultFilePrefix)_Primary.ldf') COLLATE SQL_Latin1_General_CP1_CI_AS
+GO
+IF EXISTS (SELECT 1
+           FROM   [master].[dbo].[sysdatabases]
+           WHERE  [name] = N'$(DatabaseName)')
+    BEGIN
+        ALTER DATABASE [$(DatabaseName)]
+            SET ANSI_NULLS ON,
+                ANSI_PADDING ON,
+                ANSI_WARNINGS ON,
+                ARITHABORT ON,
+                CONCAT_NULL_YIELDS_NULL ON,
+                NUMERIC_ROUNDABORT OFF,
+                QUOTED_IDENTIFIER ON,
+                ANSI_NULL_DEFAULT ON,
+                CURSOR_DEFAULT LOCAL,
+                CURSOR_CLOSE_ON_COMMIT OFF,
+                AUTO_CREATE_STATISTICS ON,
+                AUTO_SHRINK OFF,
+                AUTO_UPDATE_STATISTICS ON,
+                RECURSIVE_TRIGGERS OFF 
+            WITH ROLLBACK IMMEDIATE;
+        ALTER DATABASE [$(DatabaseName)]
+            SET AUTO_CLOSE OFF 
+            WITH ROLLBACK IMMEDIATE;
+    END
+
+
+GO
+IF EXISTS (SELECT 1
+           FROM   [master].[dbo].[sysdatabases]
+           WHERE  [name] = N'$(DatabaseName)')
+    BEGIN
+        ALTER DATABASE [$(DatabaseName)]
+            SET ALLOW_SNAPSHOT_ISOLATION OFF;
+    END
+
+
+GO
+IF EXISTS (SELECT 1
+           FROM   [master].[dbo].[sysdatabases]
+           WHERE  [name] = N'$(DatabaseName)')
+    BEGIN
+        ALTER DATABASE [$(DatabaseName)]
+            SET READ_COMMITTED_SNAPSHOT OFF 
+            WITH ROLLBACK IMMEDIATE;
+    END
+
+
+GO
+IF EXISTS (SELECT 1
+           FROM   [master].[dbo].[sysdatabases]
+           WHERE  [name] = N'$(DatabaseName)')
+    BEGIN
+        ALTER DATABASE [$(DatabaseName)]
+            SET AUTO_UPDATE_STATISTICS_ASYNC OFF,
+                PAGE_VERIFY NONE,
+                DATE_CORRELATION_OPTIMIZATION OFF,
+                DISABLE_BROKER,
+                PARAMETERIZATION SIMPLE,
+                SUPPLEMENTAL_LOGGING OFF 
+            WITH ROLLBACK IMMEDIATE;
+    END
+
+
+GO
+IF IS_SRVROLEMEMBER(N'sysadmin') = 1
+    BEGIN
+        IF EXISTS (SELECT 1
+                   FROM   [master].[dbo].[sysdatabases]
+                   WHERE  [name] = N'$(DatabaseName)')
+            BEGIN
+                EXECUTE sp_executesql N'ALTER DATABASE [$(DatabaseName)]
+    SET TRUSTWORTHY OFF,
+        DB_CHAINING OFF 
+    WITH ROLLBACK IMMEDIATE';
+            END
+    END
+ELSE
+    BEGIN
+        PRINT N'The database settings cannot be modified. You must be a SysAdmin to apply these settings.';
+    END
+
+
+GO
+IF IS_SRVROLEMEMBER(N'sysadmin') = 1
+    BEGIN
+        IF EXISTS (SELECT 1
+                   FROM   [master].[dbo].[sysdatabases]
+                   WHERE  [name] = N'$(DatabaseName)')
+            BEGIN
+                EXECUTE sp_executesql N'ALTER DATABASE [$(DatabaseName)]
+    SET HONOR_BROKER_PRIORITY OFF 
+    WITH ROLLBACK IMMEDIATE';
+            END
+    END
+ELSE
+    BEGIN
+        PRINT N'The database settings cannot be modified. You must be a SysAdmin to apply these settings.';
+    END
+
+
+GO
+ALTER DATABASE [$(DatabaseName)]
+    SET TARGET_RECOVERY_TIME = 0 SECONDS 
+    WITH ROLLBACK IMMEDIATE;
+
+
+GO
+IF EXISTS (SELECT 1
+           FROM   [master].[dbo].[sysdatabases]
+           WHERE  [name] = N'$(DatabaseName)')
+    BEGIN
+        ALTER DATABASE [$(DatabaseName)]
+            SET FILESTREAM(NON_TRANSACTED_ACCESS = OFF),
+                CONTAINMENT = NONE 
+            WITH ROLLBACK IMMEDIATE;
+    END
+
+
+GO
+IF EXISTS (SELECT 1
+           FROM   [master].[dbo].[sysdatabases]
+           WHERE  [name] = N'$(DatabaseName)')
+    BEGIN
+        ALTER DATABASE [$(DatabaseName)]
+            SET AUTO_CREATE_STATISTICS ON(INCREMENTAL = OFF),
+                MEMORY_OPTIMIZED_ELEVATE_TO_SNAPSHOT = OFF,
+                DELAYED_DURABILITY = DISABLED 
+            WITH ROLLBACK IMMEDIATE;
+    END
+
+
+GO
+IF EXISTS (SELECT 1
+           FROM   [master].[dbo].[sysdatabases]
+           WHERE  [name] = N'$(DatabaseName)')
+    BEGIN
+        ALTER DATABASE [$(DatabaseName)]
+            SET QUERY_STORE (QUERY_CAPTURE_MODE = ALL, FLUSH_INTERVAL_SECONDS = 900, INTERVAL_LENGTH_MINUTES = 60, MAX_PLANS_PER_QUERY = 200, CLEANUP_POLICY = (STALE_QUERY_THRESHOLD_DAYS = 367), MAX_STORAGE_SIZE_MB = 100) 
+            WITH ROLLBACK IMMEDIATE;
+    END
+
+
+GO
+IF EXISTS (SELECT 1
+           FROM   [master].[dbo].[sysdatabases]
+           WHERE  [name] = N'$(DatabaseName)')
+    BEGIN
+        ALTER DATABASE [$(DatabaseName)]
+            SET QUERY_STORE = OFF 
+            WITH ROLLBACK IMMEDIATE;
+    END
+
+
+GO
+IF EXISTS (SELECT 1
+           FROM   [master].[dbo].[sysdatabases]
+           WHERE  [name] = N'$(DatabaseName)')
+    BEGIN
+        ALTER DATABASE SCOPED CONFIGURATION SET MAXDOP = 0;
+        ALTER DATABASE SCOPED CONFIGURATION FOR SECONDARY SET MAXDOP = PRIMARY;
+        ALTER DATABASE SCOPED CONFIGURATION SET LEGACY_CARDINALITY_ESTIMATION = OFF;
+        ALTER DATABASE SCOPED CONFIGURATION FOR SECONDARY SET LEGACY_CARDINALITY_ESTIMATION = PRIMARY;
+        ALTER DATABASE SCOPED CONFIGURATION SET PARAMETER_SNIFFING = ON;
+        ALTER DATABASE SCOPED CONFIGURATION FOR SECONDARY SET PARAMETER_SNIFFING = PRIMARY;
+        ALTER DATABASE SCOPED CONFIGURATION SET QUERY_OPTIMIZER_HOTFIXES = OFF;
+        ALTER DATABASE SCOPED CONFIGURATION FOR SECONDARY SET QUERY_OPTIMIZER_HOTFIXES = PRIMARY;
+    END
+
+
+GO
 USE [$(DatabaseName)];
+
+
+GO
+IF fulltextserviceproperty(N'IsFulltextInstalled') = 1
+    EXECUTE sp_fulltext_database 'enable';
+
+
+GO
+PRINT N'Creating [dbo].[Apartment]...';
+
+
+GO
+CREATE TABLE [dbo].[Apartment] (
+    [AptId]           INT           IDENTITY (1, 1) NOT NULL,
+    [AptAddress]      NVARCHAR (50) NULL,
+    [SqFootage]       INT           NULL,
+    [MonthUtilityFee] FLOAT (53)    NULL,
+    [MonthParkfee]    FLOAT (53)    NULL,
+    [LastCleanDate]   DATETIME      NULL,
+    [IsVacant]        BIT           NOT NULL,
+    PRIMARY KEY CLUSTERED ([AptId] ASC)
+);
+
+
+GO
+PRINT N'Creating [dbo].[Contract]...';
+
+
+GO
+CREATE TABLE [dbo].[Contract] (
+    [ContractId]  INT        IDENTITY (1, 1) NOT NULL,
+    [StartDate]   DATETIME   NULL,
+    [EndDate]     DATETIME   NULL,
+    [MonthlyRent] FLOAT (53) NULL,
+    [AptId]       INT        NOT NULL,
+    [TenantId]    INT        NOT NULL,
+    PRIMARY KEY CLUSTERED ([ContractId] ASC)
+);
+
+
+GO
+PRINT N'Creating [dbo].[Tenant]...';
+
+
+GO
+CREATE TABLE [dbo].[Tenant] (
+    [TenantId]  INT           IDENTITY (1, 1) NOT NULL,
+    [FirstName] NVARCHAR (50) NULL,
+    [LastName]  NVARCHAR (50) NULL,
+    [Phone]     BIGINT        NULL,
+    [Email]     NVARCHAR (50) NULL,
+    PRIMARY KEY CLUSTERED ([TenantId] ASC)
+);
+
+
+GO
+PRINT N'Creating [dbo].[FK_dbo.Contract_dbo.Apartment_AptId]...';
+
+
+GO
+ALTER TABLE [dbo].[Contract]
+    ADD CONSTRAINT [FK_dbo.Contract_dbo.Apartment_AptId] FOREIGN KEY ([AptId]) REFERENCES [dbo].[Apartment] ([AptId]) ON DELETE CASCADE;
+
+
+GO
+PRINT N'Creating [dbo].[FK_dbo.Contract_dbo.Tenant_TenantId]...';
+
+
+GO
+ALTER TABLE [dbo].[Contract]
+    ADD CONSTRAINT [FK_dbo.Contract_dbo.Tenant_TenantId] FOREIGN KEY ([TenantId]) REFERENCES [dbo].[Tenant] ([TenantId]) ON DELETE CASCADE;
 
 
 GO
@@ -48,9 +309,50 @@ Post-Deployment Script Template
  Example:      :r .\myfile.sql								
  Use SQLCMD syntax to reference a variable in the post-deployment script.		
  Example:      :setvar TableName MyTable							
-               SELECT * FROM [$(TableName)]					
+			   SELECT * FROM [$(TableName)]					
 --------------------------------------------------------------------------------------
 */
+
+DROP TABLE Contract;
+DROP TABLE Apartment;
+DROP TABLE Tenant;
+
+CREATE TABLE [dbo].[Apartment]
+(
+	[AptId] INT           IDENTITY (1, 1) NOT NULL,
+	[AptAddress]    NVARCHAR (50) NULL,
+	[SqFootage]  INT           NULL,
+	[MonthUtilityFee] FLOAT NULL, 
+	[MonthParkfee] FLOAT NULL, 
+	[LastCleanDate] DATETIME NULL, 
+	[IsVacant] BIT NOT NULL, 
+	PRIMARY KEY CLUSTERED ([AptId] ASC)
+)
+
+CREATE TABLE [dbo].[Tenant]
+(
+	[TenantId] INT           IDENTITY (1, 1) NOT NULL,
+	[FirstName]    NVARCHAR (50) NULL,
+	[LastName]  NVARCHAR(50)           NULL,
+	[Phone] BIGINT NULL, 
+	[Email] NVARCHAR(50) NULL,
+	PRIMARY KEY CLUSTERED ([TenantId] ASC)
+)
+
+CREATE TABLE [dbo].[Contract]
+(
+	[ContractId] INT IDENTITY (1, 1) NOT NULL,
+	[StartDate]        DATETIME NULL,
+	[EndDate]     DATETIME NULL,
+	[MonthlyRent]    FLOAT NULL,
+	[AptId]	INT NOT NULL,
+	[TenantId] INT NOT NULL,
+	PRIMARY KEY CLUSTERED ([ContractId] ASC),
+	CONSTRAINT [FK_dbo.Contract_dbo.Apartment_AptId] FOREIGN KEY ([AptId]) 
+		REFERENCES [dbo].[Apartment] ([AptId]) ON DELETE CASCADE,
+	CONSTRAINT [FK_dbo.Contract_dbo.Tenant_TenantId] FOREIGN KEY ([TenantId]) 
+		REFERENCES [dbo].[Tenant] ([TenantId]) ON DELETE CASCADE
+)
 
 MERGE INTO Tenant AS Target 
 USING (VALUES 
@@ -76,18 +378,18 @@ VALUES (FirstName, LastName, Phone, Email);
 
 MERGE INTO Apartment AS Target
 USING (VALUES 
-(1, '2401 Alpine St', 1100, 95, 10, 3/14/2017, 0),
-(2, '2402 Alpine St', 890, 75, 5, 5/30/2017, 0),
-(3, '2403 Alpine St', 690, 60, 5, 4/1/2017, 0),
-(4, '2404 Alpine St', 1100, 95, 5, 3/31/2017, 0),
-(5, '2405 Alpine St', 890, 75, 10, 5/31/2017, 0),
-(6, '2406 Alpine St', 690, 60, 0, 5/30/2017, 0),
-(7, '2407 Alpine St', 1100, 95, 10, 4/15/2017, 0),
-(8, '2408 Alpine St', 890, 75, 5, 5/22/2017, 0),
-(9, '2409 Alpine St', 690, 60, 10, 4/28/2017, 0),
-(10, '2410 Alpine St', 1100, 95, 10, 3/2/2017, 0),
-(11, '2411 Alpine St', 890, 75, 10, 4/3/2017, 0),
-(12, '2412 Alpine St', 690, 60, 5, 6/19/2017, 0)
+(1, '2401 Alpine St', 1100, 95, 10, 3/14/2017, 'false'),
+(2, '2402 Alpine St', 890, 75, 5, 5/30/2017, 'false'),
+(3, '2403 Alpine St', 690, 60, 5, 4/1/2017, 'false'),
+(4, '2404 Alpine St', 1100, 95, 5, 3/31/2017, 'false'),
+(5, '2405 Alpine St', 890, 75, 10, 5/31/2017, 'false'),
+(6, '2406 Alpine St', 690, 60, 0, 5/30/2017, 'false'),
+(7, '2407 Alpine St', 1100, 95, 10, 4/15/2017, 'false'),
+(8, '2408 Alpine St', 890, 75, 5, 5/22/2017, 'false'),
+(9, '2409 Alpine St', 690, 60, 10, 4/28/2017, 'false'),
+(10, '2410 Alpine St', 1100, 95, 10, 3/2/2017, 'false'),
+(11, '2411 Alpine St', 890, 75, 10, 4/3/2017, 'false'),
+(12, '2412 Alpine St', 690, 60, 5, 6/19/2017, 'false')
 
 )
 AS Source (AptId, AptAddress, SqFootage, MonthUtilityFee, MonthParkfee, LastCleanDate, IsVacant)
@@ -118,6 +420,24 @@ WHEN NOT MATCHED BY TARGET THEN
 INSERT (StartDate, EndDate, MonthlyRent, AptId, TenantId)
 VALUES (StartDate, EndDate, MonthlyRent, AptId, TenantId);
 GO
+
+GO
+DECLARE @VarDecimalSupported AS BIT;
+
+SELECT @VarDecimalSupported = 0;
+
+IF ((ServerProperty(N'EngineEdition') = 3)
+    AND (((@@microsoftversion / power(2, 24) = 9)
+          AND (@@microsoftversion & 0xffff >= 3024))
+         OR ((@@microsoftversion / power(2, 24) = 10)
+             AND (@@microsoftversion & 0xffff >= 1600))))
+    SELECT @VarDecimalSupported = 1;
+
+IF (@VarDecimalSupported > 0)
+    BEGIN
+        EXECUTE sp_db_vardecimal_storage_format N'$(DatabaseName)', 'ON';
+    END
+
 
 GO
 PRINT N'Update complete.';
