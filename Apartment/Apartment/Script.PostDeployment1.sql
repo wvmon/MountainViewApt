@@ -33,7 +33,7 @@ VALUES (FirstName, LastName, Phone, Email);
 
 MERGE INTO Apartment AS Target
 USING (VALUES 
-(1, '2401 Alpine St', 1100, 95, 10, 3/14/2017, 'false'),
+(1, '2401 Alpine St', 1100, 95, 10, 3/14/2017, 'true'),
 (2, '2402 Alpine St', 890, 75, 5, 5/30/2017, 'false'),
 (3, '2403 Alpine St', 690, 60, 5, 4/1/2017, 'false'),
 (4, '2404 Alpine St', 1100, 95, 5, 3/31/2017, 'false'),
