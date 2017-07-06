@@ -9,6 +9,7 @@ Post-Deployment Script Template
                SELECT * FROM [$(TableName)]					
 --------------------------------------------------------------------------------------
 */
+
 MERGE INTO Tenant AS Target 
 USING (VALUES 
 (1, 'Joseph', 'Green', 2085554678, 'josephG@mymail.com'),
