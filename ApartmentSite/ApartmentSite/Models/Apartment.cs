@@ -26,7 +26,7 @@ namespace ApartmentSite.Models
         public Nullable<double> MonthUtilityFee { get; set; }
         public Nullable<double> MonthParkfee { get; set; }
         public Nullable<System.DateTime> LastCleanDate { get; set; }
-        public Nullable<int> IsVacant { get; set; }
+        public bool IsVacant { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Contract> Contracts { get; set; }

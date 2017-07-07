@@ -34,18 +34,18 @@ VALUES (FirstName, LastName, Phone, Email);
 
 MERGE INTO Apartment AS Target
 USING (VALUES 
-(1, '2401 Alpine St', 1100, 95, 10, 3/14/2017, 0),
-(2, '2402 Alpine St', 890, 75, 5, 5/30/2017, 0),
-(3, '2403 Alpine St', 690, 60, 5, 4/1/2017, 0),
-(4, '2404 Alpine St', 1100, 95, 5, 3/31/2017, 0),
-(5, '2405 Alpine St', 890, 75, 10, 5/31/2017, 0),
-(6, '2406 Alpine St', 690, 60, 0, 5/30/2017, 0),
-(7, '2407 Alpine St', 1100, 95, 10, 4/15/2017, 0),
-(8, '2408 Alpine St', 890, 75, 5, 5/22/2017, 0),
-(9, '2409 Alpine St', 690, 60, 10, 4/28/2017, 0),
-(10, '2410 Alpine St', 1100, 95, 10, 3/2/2017, 0),
-(11, '2411 Alpine St', 890, 75, 10, 4/3/2017, 0),
-(12, '2412 Alpine St', 690, 60, 5, 6/19/2017, 0)
+(1, '2401 Alpine St', 1100, 95, 10, 3/14/2017, 'false'),
+(2, '2402 Alpine St', 890, 75, 5, 5/30/2017, 'false'),
+(3, '2403 Alpine St', 690, 60, 5, 4/1/2017, 'false'),
+(4, '2404 Alpine St', 1100, 95, 5, 3/31/2017, 'false'),
+(5, '2405 Alpine St', 890, 75, 10, 5/31/2017, 'false'),
+(6, '2406 Alpine St', 690, 60, 0, 5/30/2017, 'false'),
+(7, '2407 Alpine St', 1100, 95, 10, 4/15/2017, 'false'),
+(8, '2408 Alpine St', 890, 75, 5, 5/22/2017, 'false'),
+(9, '2409 Alpine St', 690, 60, 10, 4/28/2017, 'false'),
+(10, '2410 Alpine St', 1100, 95, 10, 3/2/2017, 'false'),
+(11, '2411 Alpine St', 890, 75, 10, 4/3/2017, 'false'),
+(12, '2412 Alpine St', 690, 60, 5, 6/19/2017, 'false')
 
 )
 AS Source (AptId, AptAddress, SqFootage, MonthUtilityFee, MonthParkfee, LastCleanDate, IsVacant)

@@ -190,8 +190,8 @@
     <Content Include="Content\Site.css" />
     <Content Include="Models\ApartmentModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>ApartmentModel.Context.cs</LastGenOutput>
       <DependentUpon>ApartmentModel.edmx</DependentUpon>
+      <LastGenOutput>ApartmentModel.Context.cs</LastGenOutput>
     </Content>
     <Content Include="Models\ApartmentModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -235,16 +235,16 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Tenants\Create.cshtml" />
-    <Content Include="Views\Tenants\Delete.cshtml" />
-    <Content Include="Views\Tenants\Details.cshtml" />
-    <Content Include="Views\Tenants\Edit.cshtml" />
-    <Content Include="Views\Tenants\Index.cshtml" />
     <Content Include="Views\Apartments\Create.cshtml" />
     <Content Include="Views\Apartments\Delete.cshtml" />
     <Content Include="Views\Apartments\Details.cshtml" />
     <Content Include="Views\Apartments\Edit.cshtml" />
     <Content Include="Views\Apartments\Index.cshtml" />
+    <Content Include="Views\Tenants\Create.cshtml" />
+    <Content Include="Views\Tenants\Delete.cshtml" />
+    <Content Include="Views\Tenants\Details.cshtml" />
+    <Content Include="Views\Tenants\Edit.cshtml" />
+    <Content Include="Views\Tenants\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

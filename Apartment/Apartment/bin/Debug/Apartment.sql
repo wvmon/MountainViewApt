@@ -36,7 +36,115 @@ IF N'$(__IsSqlCmdEnabled)' NOT LIKE N'True'
 
 
 GO
+IF EXISTS (SELECT 1
+           FROM   [master].[dbo].[sysdatabases]
+           WHERE  [name] = N'$(DatabaseName)')
+    BEGIN
+        ALTER DATABASE [$(DatabaseName)]
+            SET ARITHABORT ON,
+                CONCAT_NULL_YIELDS_NULL ON,
+                CURSOR_DEFAULT LOCAL 
+            WITH ROLLBACK IMMEDIATE;
+    END
+
+
+GO
+IF EXISTS (SELECT 1
+           FROM   [master].[dbo].[sysdatabases]
+           WHERE  [name] = N'$(DatabaseName)')
+    BEGIN
+        ALTER DATABASE [$(DatabaseName)]
+            SET PAGE_VERIFY NONE,
+                DISABLE_BROKER 
+            WITH ROLLBACK IMMEDIATE;
+    END
+
+
+GO
+ALTER DATABASE [$(DatabaseName)]
+    SET TARGET_RECOVERY_TIME = 0 SECONDS 
+    WITH ROLLBACK IMMEDIATE;
+
+
+GO
+IF EXISTS (SELECT 1
+           FROM   [master].[dbo].[sysdatabases]
+           WHERE  [name] = N'$(DatabaseName)')
+    BEGIN
+        ALTER DATABASE [$(DatabaseName)]
+            SET QUERY_STORE (CLEANUP_POLICY = (STALE_QUERY_THRESHOLD_DAYS = 367)) 
+            WITH ROLLBACK IMMEDIATE;
+    END
+
+
+GO
 USE [$(DatabaseName)];
+
+
+GO
+PRINT N'Creating [dbo].[Apartment]...';
+
+
+GO
+CREATE TABLE [dbo].[Apartment] (
+    [AptId]           INT           IDENTITY (1, 1) NOT NULL,
+    [AptAddress]      NVARCHAR (50) NULL,
+    [SqFootage]       INT           NULL,
+    [MonthUtilityFee] FLOAT (53)    NULL,
+    [MonthParkfee]    FLOAT (53)    NULL,
+    [LastCleanDate]   DATETIME      NULL,
+    [IsVacant]        BIT           NOT NULL,
+    PRIMARY KEY CLUSTERED ([AptId] ASC)
+);
+
+
+GO
+PRINT N'Creating [dbo].[Contract]...';
+
+
+GO
+CREATE TABLE [dbo].[Contract] (
+    [ContractId]  INT        IDENTITY (1, 1) NOT NULL,
+    [StartDate]   DATETIME   NULL,
+    [EndDate]     DATETIME   NULL,
+    [MonthlyRent] FLOAT (53) NULL,
+    [AptId]       INT        NOT NULL,
+    [TenantId]    INT        NOT NULL,
+    PRIMARY KEY CLUSTERED ([ContractId] ASC)
+);
+
+
+GO
+PRINT N'Creating [dbo].[Tenant]...';
+
+
+GO
+CREATE TABLE [dbo].[Tenant] (
+    [TenantId]  INT           IDENTITY (1, 1) NOT NULL,
+    [FirstName] NVARCHAR (50) NULL,
+    [LastName]  NVARCHAR (50) NULL,
+    [Phone]     BIGINT        NULL,
+    [Email]     NVARCHAR (50) NULL,
+    PRIMARY KEY CLUSTERED ([TenantId] ASC)
+);
+
+
+GO
+PRINT N'Creating [dbo].[FK_dbo.Contract_dbo.Apartment_AptId]...';
+
+
+GO
+ALTER TABLE [dbo].[Contract] WITH NOCHECK
+    ADD CONSTRAINT [FK_dbo.Contract_dbo.Apartment_AptId] FOREIGN KEY ([AptId]) REFERENCES [dbo].[Apartment] ([AptId]) ON DELETE CASCADE;
+
+
+GO
+PRINT N'Creating [dbo].[FK_dbo.Contract_dbo.Tenant_TenantId]...';
+
+
+GO
+ALTER TABLE [dbo].[Contract] WITH NOCHECK
+    ADD CONSTRAINT [FK_dbo.Contract_dbo.Tenant_TenantId] FOREIGN KEY ([TenantId]) REFERENCES [dbo].[Tenant] ([TenantId]) ON DELETE CASCADE;
 
 
 GO
@@ -76,18 +184,18 @@ VALUES (FirstName, LastName, Phone, Email);
 
 MERGE INTO Apartment AS Target
 USING (VALUES 
-(1, '2401 Alpine St', 1100, 95, 10, 3/14/2017, 0),
-(2, '2402 Alpine St', 890, 75, 5, 5/30/2017, 0),
-(3, '2403 Alpine St', 690, 60, 5, 4/1/2017, 0),
-(4, '2404 Alpine St', 1100, 95, 5, 3/31/2017, 0),
-(5, '2405 Alpine St', 890, 75, 10, 5/31/2017, 0),
-(6, '2406 Alpine St', 690, 60, 0, 5/30/2017, 0),
-(7, '2407 Alpine St', 1100, 95, 10, 4/15/2017, 0),
-(8, '2408 Alpine St', 890, 75, 5, 5/22/2017, 0),
-(9, '2409 Alpine St', 690, 60, 10, 4/28/2017, 0),
-(10, '2410 Alpine St', 1100, 95, 10, 3/2/2017, 0),
-(11, '2411 Alpine St', 890, 75, 10, 4/3/2017, 0),
-(12, '2412 Alpine St', 690, 60, 5, 6/19/2017, 0)
+(1, '2401 Alpine St', 1100, 95, 10, 3/14/2017, 'false'),
+(2, '2402 Alpine St', 890, 75, 5, 5/30/2017, 'false'),
+(3, '2403 Alpine St', 690, 60, 5, 4/1/2017, 'false'),
+(4, '2404 Alpine St', 1100, 95, 5, 3/31/2017, 'false'),
+(5, '2405 Alpine St', 890, 75, 10, 5/31/2017, 'false'),
+(6, '2406 Alpine St', 690, 60, 0, 5/30/2017, 'false'),
+(7, '2407 Alpine St', 1100, 95, 10, 4/15/2017, 'false'),
+(8, '2408 Alpine St', 890, 75, 5, 5/22/2017, 'false'),
+(9, '2409 Alpine St', 690, 60, 10, 4/28/2017, 'false'),
+(10, '2410 Alpine St', 1100, 95, 10, 3/2/2017, 'false'),
+(11, '2411 Alpine St', 890, 75, 10, 4/3/2017, 'false'),
+(12, '2412 Alpine St', 690, 60, 5, 6/19/2017, 'false')
 
 )
 AS Source (AptId, AptAddress, SqFootage, MonthUtilityFee, MonthParkfee, LastCleanDate, IsVacant)
@@ -118,6 +226,20 @@ WHEN NOT MATCHED BY TARGET THEN
 INSERT (StartDate, EndDate, MonthlyRent, AptId, TenantId)
 VALUES (StartDate, EndDate, MonthlyRent, AptId, TenantId);
 GO
+
+GO
+PRINT N'Checking existing data against newly created constraints';
+
+
+GO
+USE [$(DatabaseName)];
+
+
+GO
+ALTER TABLE [dbo].[Contract] WITH CHECK CHECK CONSTRAINT [FK_dbo.Contract_dbo.Apartment_AptId];
+
+ALTER TABLE [dbo].[Contract] WITH CHECK CHECK CONSTRAINT [FK_dbo.Contract_dbo.Tenant_TenantId];
+
 
 GO
 PRINT N'Update complete.';

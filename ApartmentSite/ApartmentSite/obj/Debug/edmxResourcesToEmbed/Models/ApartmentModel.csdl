@@ -10,7 +10,7 @@
     <Property Name="MonthUtilityFee" Type="Double" />
     <Property Name="MonthParkfee" Type="Double" />
     <Property Name="LastCleanDate" Type="DateTime" Precision="3" />
-    <Property Name="IsVacant" Type="Int32" />
+    <Property Name="IsVacant" Type="Boolean" Nullable="false" />
     <NavigationProperty Name="Contracts" Relationship="Self.FK_dbo_Contract_dbo_Apartment_AptId" FromRole="Apartment" ToRole="Contract" />
   </EntityType>
   <EntityType Name="Contract">
