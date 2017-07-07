@@ -30,7 +30,7 @@
     <Property Name="TenantId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="FirstName" Type="nvarchar" MaxLength="50" />
     <Property Name="LastName" Type="nvarchar" MaxLength="50" />
-    <Property Name="Phone" Type="bigint" />
+    <Property Name="Phone" Type="nvarchar" MaxLength="50" />
     <Property Name="Email" Type="nvarchar" MaxLength="50" />
   </EntityType>
   <Association Name="FK_dbo_Contract_dbo_Apartment_AptId">

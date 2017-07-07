@@ -36,115 +36,15 @@ IF N'$(__IsSqlCmdEnabled)' NOT LIKE N'True'
 
 
 GO
-IF EXISTS (SELECT 1
-           FROM   [master].[dbo].[sysdatabases]
-           WHERE  [name] = N'$(DatabaseName)')
-    BEGIN
-        ALTER DATABASE [$(DatabaseName)]
-            SET ARITHABORT ON,
-                CONCAT_NULL_YIELDS_NULL ON,
-                CURSOR_DEFAULT LOCAL 
-            WITH ROLLBACK IMMEDIATE;
-    END
-
-
-GO
-IF EXISTS (SELECT 1
-           FROM   [master].[dbo].[sysdatabases]
-           WHERE  [name] = N'$(DatabaseName)')
-    BEGIN
-        ALTER DATABASE [$(DatabaseName)]
-            SET PAGE_VERIFY NONE,
-                DISABLE_BROKER 
-            WITH ROLLBACK IMMEDIATE;
-    END
-
-
-GO
-ALTER DATABASE [$(DatabaseName)]
-    SET TARGET_RECOVERY_TIME = 0 SECONDS 
-    WITH ROLLBACK IMMEDIATE;
-
-
-GO
-IF EXISTS (SELECT 1
-           FROM   [master].[dbo].[sysdatabases]
-           WHERE  [name] = N'$(DatabaseName)')
-    BEGIN
-        ALTER DATABASE [$(DatabaseName)]
-            SET QUERY_STORE (CLEANUP_POLICY = (STALE_QUERY_THRESHOLD_DAYS = 367)) 
-            WITH ROLLBACK IMMEDIATE;
-    END
-
-
-GO
 USE [$(DatabaseName)];
 
 
 GO
-PRINT N'Creating [dbo].[Apartment]...';
+PRINT N'Altering [dbo].[Tenant]...';
 
 
 GO
-CREATE TABLE [dbo].[Apartment] (
-    [AptId]           INT           IDENTITY (1, 1) NOT NULL,
-    [AptAddress]      NVARCHAR (50) NULL,
-    [SqFootage]       INT           NULL,
-    [MonthUtilityFee] FLOAT (53)    NULL,
-    [MonthParkfee]    FLOAT (53)    NULL,
-    [LastCleanDate]   DATETIME      NULL,
-    [IsVacant]        BIT           NOT NULL,
-    PRIMARY KEY CLUSTERED ([AptId] ASC)
-);
-
-
-GO
-PRINT N'Creating [dbo].[Contract]...';
-
-
-GO
-CREATE TABLE [dbo].[Contract] (
-    [ContractId]  INT        IDENTITY (1, 1) NOT NULL,
-    [StartDate]   DATETIME   NULL,
-    [EndDate]     DATETIME   NULL,
-    [MonthlyRent] FLOAT (53) NULL,
-    [AptId]       INT        NOT NULL,
-    [TenantId]    INT        NOT NULL,
-    PRIMARY KEY CLUSTERED ([ContractId] ASC)
-);
-
-
-GO
-PRINT N'Creating [dbo].[Tenant]...';
-
-
-GO
-CREATE TABLE [dbo].[Tenant] (
-    [TenantId]  INT           IDENTITY (1, 1) NOT NULL,
-    [FirstName] NVARCHAR (50) NULL,
-    [LastName]  NVARCHAR (50) NULL,
-    [Phone]     BIGINT        NULL,
-    [Email]     NVARCHAR (50) NULL,
-    PRIMARY KEY CLUSTERED ([TenantId] ASC)
-);
-
-
-GO
-PRINT N'Creating [dbo].[FK_dbo.Contract_dbo.Apartment_AptId]...';
-
-
-GO
-ALTER TABLE [dbo].[Contract] WITH NOCHECK
-    ADD CONSTRAINT [FK_dbo.Contract_dbo.Apartment_AptId] FOREIGN KEY ([AptId]) REFERENCES [dbo].[Apartment] ([AptId]) ON DELETE CASCADE;
-
-
-GO
-PRINT N'Creating [dbo].[FK_dbo.Contract_dbo.Tenant_TenantId]...';
-
-
-GO
-ALTER TABLE [dbo].[Contract] WITH NOCHECK
-    ADD CONSTRAINT [FK_dbo.Contract_dbo.Tenant_TenantId] FOREIGN KEY ([TenantId]) REFERENCES [dbo].[Tenant] ([TenantId]) ON DELETE CASCADE;
+ALTER TABLE [dbo].[Tenant] ALTER COLUMN [Phone] NVARCHAR (50) NULL;
 
 
 GO
@@ -162,18 +62,18 @@ Post-Deployment Script Template
 
 MERGE INTO Tenant AS Target 
 USING (VALUES 
-(1, 'Joseph', 'Green', 2085554678, 'josephG@mymail.com'),
-(2, 'Donald', 'Copeland', 2085554683, 'webdragon@mymail.com'),
-(3, 'Erika', 'Martinez', 2085554725, 'Erikamartinez@mymail.com'),
-(4, 'Ross', 'Larsen', 2085554689, 'rosstheboss@mymail.com'),
-(5, 'Freddie', 'Estrada', 2085554687, 'freddiestrada@mymail.com'),
-(6, 'Paek', 'Jun-Seo', 2085554688, 'paekjunseo@mymail.com'),
-(7, 'Ray', 'Bolger', 2085554694, 'scarecrow@mymail.com'),
-(8, 'Guadalupe', 'Chavez', 2085554714, 'lupechavez@mymail.com'),
-(9, 'Lindsay', 'Page', 2085554707, 'lindsaypage752@mymail.com'),
-(10, 'Kurt', 'Evans', 2085554691, 'kevans@mymail.com'),
-(11, 'Thurman', 'Howell', 2085554693, 'thurmanhowellthethird@mymail.com'),
-(12, 'Calvin', 'Price', 2085554680, 'calvinpriceless@mymail.com')
+(1, 'Joseph', 'Green', '2085554678', 'josephG@mymail.com'),
+(2, 'Donald', 'Copeland', '2085554683', 'webdragon@mymail.com'),
+(3, 'Erika', 'Martinez', '2085554725', 'Erikamartinez@mymail.com'),
+(4, 'Ross', 'Larsen', '2085554689', 'rosstheboss@mymail.com'),
+(5, 'Freddie', 'Estrada', '2085554687', 'freddiestrada@mymail.com'),
+(6, 'Paek', 'Jun-Seo', '2085554688', 'paekjunseo@mymail.com'),
+(7, 'Ray', 'Bolger', '2085554694', 'scarecrow@mymail.com'),
+(8, 'Guadalupe', 'Chavez', '2085554714', 'lupechavez@mymail.com'),
+(9, 'Lindsay', 'Page', '2085554707', 'lindsaypage752@mymail.com'),
+(10, 'Kurt', 'Evans', '2085554691', 'kevans@mymail.com'),
+(11, 'Thurman', 'Howell', '2085554693', 'thurmanhowellthethird@mymail.com'),
+(12, 'Calvin', 'Price', '2085554680', 'calvinpriceless@mymail.com')
 
 ) 
 AS Source (TenantId, FirstName, LastName, Phone, Email) 
@@ -226,20 +126,6 @@ WHEN NOT MATCHED BY TARGET THEN
 INSERT (StartDate, EndDate, MonthlyRent, AptId, TenantId)
 VALUES (StartDate, EndDate, MonthlyRent, AptId, TenantId);
 GO
-
-GO
-PRINT N'Checking existing data against newly created constraints';
-
-
-GO
-USE [$(DatabaseName)];
-
-
-GO
-ALTER TABLE [dbo].[Contract] WITH CHECK CHECK CONSTRAINT [FK_dbo.Contract_dbo.Apartment_AptId];
-
-ALTER TABLE [dbo].[Contract] WITH CHECK CHECK CONSTRAINT [FK_dbo.Contract_dbo.Tenant_TenantId];
-
 
 GO
 PRINT N'Update complete.';

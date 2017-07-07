@@ -12,18 +12,18 @@ Post-Deployment Script Template
 
 MERGE INTO Tenant AS Target 
 USING (VALUES 
-(1, 'Joseph', 'Green', 2085554678, 'josephG@mymail.com'),
-(2, 'Donald', 'Copeland', 2085554683, 'webdragon@mymail.com'),
-(3, 'Erika', 'Martinez', 2085554725, 'Erikamartinez@mymail.com'),
-(4, 'Ross', 'Larsen', 2085554689, 'rosstheboss@mymail.com'),
-(5, 'Freddie', 'Estrada', 2085554687, 'freddiestrada@mymail.com'),
-(6, 'Paek', 'Jun-Seo', 2085554688, 'paekjunseo@mymail.com'),
-(7, 'Ray', 'Bolger', 2085554694, 'scarecrow@mymail.com'),
-(8, 'Guadalupe', 'Chavez', 2085554714, 'lupechavez@mymail.com'),
-(9, 'Lindsay', 'Page', 2085554707, 'lindsaypage752@mymail.com'),
-(10, 'Kurt', 'Evans', 2085554691, 'kevans@mymail.com'),
-(11, 'Thurman', 'Howell', 2085554693, 'thurmanhowellthethird@mymail.com'),
-(12, 'Calvin', 'Price', 2085554680, 'calvinpriceless@mymail.com')
+(1, 'Joseph', 'Green', '2085554678', 'josephG@mymail.com'),
+(2, 'Donald', 'Copeland', '2085554683', 'webdragon@mymail.com'),
+(3, 'Erika', 'Martinez', '2085554725', 'Erikamartinez@mymail.com'),
+(4, 'Ross', 'Larsen', '2085554689', 'rosstheboss@mymail.com'),
+(5, 'Freddie', 'Estrada', '2085554687', 'freddiestrada@mymail.com'),
+(6, 'Paek', 'Jun-Seo', '2085554688', 'paekjunseo@mymail.com'),
+(7, 'Ray', 'Bolger', '2085554694', 'scarecrow@mymail.com'),
+(8, 'Guadalupe', 'Chavez', '2085554714', 'lupechavez@mymail.com'),
+(9, 'Lindsay', 'Page', '2085554707', 'lindsaypage752@mymail.com'),
+(10, 'Kurt', 'Evans', '2085554691', 'kevans@mymail.com'),
+(11, 'Thurman', 'Howell', '2085554693', 'thurmanhowellthethird@mymail.com'),
+(12, 'Calvin', 'Price', '2085554680', 'calvinpriceless@mymail.com')
 
 ) 
 AS Source (TenantId, FirstName, LastName, Phone, Email) 

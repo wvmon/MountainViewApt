@@ -33,7 +33,7 @@
     <Property Name="TenantId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="Phone" Type="Int64" />
+    <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="Contracts" Relationship="Self.FK_dbo_Contract_dbo_Tenant_TenantId" FromRole="Tenant" ToRole="Contract" />
   </EntityType>
