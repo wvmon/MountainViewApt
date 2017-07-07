@@ -10,7 +10,7 @@
     <Property Name="MonthUtilityFee" Type="float" />
     <Property Name="MonthParkfee" Type="float" />
     <Property Name="LastCleanDate" Type="datetime" />
-    <Property Name="IsVacant" Type="int" />
+    <Property Name="IsVacant" Type="bit" Nullable="false" />
   </EntityType>
   <EntityType Name="Contract">
     <Key>
@@ -30,7 +30,7 @@
     <Property Name="TenantId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="FirstName" Type="nvarchar" MaxLength="50" />
     <Property Name="LastName" Type="nvarchar" MaxLength="50" />
-    <Property Name="Phone" Type="bigint" />
+    <Property Name="Phone" Type="nvarchar" MaxLength="50" />
     <Property Name="Email" Type="nvarchar" MaxLength="50" />
   </EntityType>
   <Association Name="FK_dbo_Contract_dbo_Apartment_AptId">

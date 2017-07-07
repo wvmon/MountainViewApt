@@ -6,6 +6,6 @@
 	[MonthUtilityFee] FLOAT NULL, 
 	[MonthParkfee] FLOAT NULL, 
 	[LastCleanDate] DATETIME NULL, 
-	[IsVacant] INT NULL, 
+	[IsVacant] BIT NOT NULL, 
 	PRIMARY KEY CLUSTERED ([AptId] ASC)
 )

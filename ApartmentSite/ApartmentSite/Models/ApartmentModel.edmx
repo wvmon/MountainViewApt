@@ -15,7 +15,7 @@
           <Property Name="MonthUtilityFee" Type="float" />
           <Property Name="MonthParkfee" Type="float" />
           <Property Name="LastCleanDate" Type="datetime" />
-          <Property Name="IsVacant" Type="int" />
+          <Property Name="IsVacant" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="Contract">
           <Key>
@@ -35,7 +35,7 @@
           <Property Name="TenantId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="FirstName" Type="nvarchar" MaxLength="50" />
           <Property Name="LastName" Type="nvarchar" MaxLength="50" />
-          <Property Name="Phone" Type="bigint" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="50" />
           <Property Name="Email" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <Association Name="FK_dbo_Contract_dbo_Apartment_AptId">
@@ -94,7 +94,7 @@
           <Property Name="MonthUtilityFee" Type="Double" />
           <Property Name="MonthParkfee" Type="Double" />
           <Property Name="LastCleanDate" Type="DateTime" Precision="3" />
-          <Property Name="IsVacant" Type="Int32" />
+          <Property Name="IsVacant" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="Contracts" Relationship="Self.FK_dbo_Contract_dbo_Apartment_AptId" FromRole="Apartment" ToRole="Contract" />
         </EntityType>
         <EntityType Name="Contract">
@@ -117,7 +117,7 @@
           <Property Name="TenantId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Phone" Type="Int64" />
+          <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Contracts" Relationship="Self.FK_dbo_Contract_dbo_Tenant_TenantId" FromRole="Tenant" ToRole="Contract" />
         </EntityType>
