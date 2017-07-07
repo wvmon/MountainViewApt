@@ -176,6 +176,8 @@
     <Compile Include="Models\Contract.cs">
       <DependentUpon>ApartmentModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Metadata.cs" />
+    <Compile Include="Models\PartialClasses.cs" />
     <Compile Include="Models\Tenant.cs">
       <DependentUpon>ApartmentModel.tt</DependentUpon>
     </Compile>
