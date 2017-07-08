@@ -23,20 +23,11 @@ namespace ApartmentSite.Models
         }
     
         public int AptId { get; set; }
-        [DisplayName("Apt Address")]
         public string AptAddress { get; set; }
-        [DisplayName("Sq. Footage")]
         public Nullable<int> SqFootage { get; set; }
-        [DisplayName("Month Utility Fee")]
-        [DataType(DataType.Currency)]
         public Nullable<double> MonthUtilityFee { get; set; }
-        [DisplayName("Month Park Fee")]
-        [DataType(DataType.Currency)]
         public Nullable<double> MonthParkfee { get; set; }
-        [DisplayName("Last Clean Date")]
-        [DataType(DataType.DateTime)]
         public Nullable<System.DateTime> LastCleanDate { get; set; }
-        [DisplayName("Vacant")]
         public bool IsVacant { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
